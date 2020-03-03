@@ -3,10 +3,10 @@ import { NavLink } from 'react-router-dom';
 import './Nav.css';
 
 
-const Nav = ({loggedin}) => {
+const Nav = ({loggedIn}) => {
   let navlinks = [];
   let navCode;
-  if (!loggedin) {
+  if (!loggedIn) {
     navCode = (
       <div className='NavLinks'>
         <NavLink exact to="/login">Login</NavLink>

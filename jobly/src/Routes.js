@@ -5,8 +5,9 @@ import Company from './Company';
 import Jobs from './Jobs';
 import Login from './Login';
 import Profile from './Profile';
+import Home from './Home';
 
-const Routes = ({ dogs }) => {
+const Routes = ({loggedIn}) => {
 
   return (
     <Switch>
@@ -15,7 +16,7 @@ const Routes = ({ dogs }) => {
       <Route exact path="/jobs"><Jobs /></Route>
       <Route exact path="/login"><Login /></Route >
       <Route exact path="/profile"><Profile /></Route >
-      
+      <Route exact path="/"><Home loggedIn={loggedIn}/></Route>
       <Redirect to="/" />
     </Switch >
   );

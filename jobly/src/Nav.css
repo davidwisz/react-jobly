@@ -15,3 +15,15 @@
 .NavLinks a:hover, .Logo:hover {
   color: #DC381F;
 }
+
+.Button {
+  background-color: #3cf;
+  padding: 8px 24px;
+  border-radius: 4px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.Button:hover, .Button:visited {
+  color: #fff;
+}
