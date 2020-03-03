@@ -5,39 +5,28 @@ import './Nav.css';
 
 const Nav = ({loggedin}) => {
   let navlinks = [];
+  let navCode;
   if (!loggedin) {
-    navlinks.push({
-      name: 'Login',
-      url: '/login'
-    })
+    navCode = (
+      <div className='NavLinks'>
+        <NavLink exact to="/login">Login</NavLink>
+      </div>
+    );
   }
   else {
-    navlinks.push({
-      name: 'Companies',
-      url: '/companies'
-    });
-    navlinks.push({
-      name: 'Jobs',
-      url: '/jobs'
-    });
-    navlinks.push({
-      name: 'Profile',
-      url: '/login'
-    });
-    navlinks.push({
-      name: 'Log out',
-      url: '/logout'
-    })
-    
+    navCode = (
+      <div className='NavLinks'>
+        <NavLink exact to="/companies">Companies</NavLink>
+        <NavLink exact to="/jobs">Jobs</NavLink>
+        <NavLink exact to="/profile">Profile </NavLink>
+        <NavLink exact to="/logout">Logout</NavLink>
+      </div>
+    );
   }
   return (
     <nav className='Nav'>
-      <NavLink exact to='/dogs'>Dogs</NavLink>
-      {
-        navlinks.map(navlink => (
-          <NavLink key={navlink.name} exact to={`/dogs/${dog.name}`}>{dog.name}</NavLink>
-        ))
-      }
+      <NavLink className='Logo' exact to="/">Jobly </NavLink>
+      {navCode}
     </nav>
   );
 }
