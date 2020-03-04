@@ -10,15 +10,18 @@ function Companies() {
     async function getCompanies() {
     let res = await JoblyAPI.getCompanies();
       setCompanies(res);
-      console.log(res);
     }
     getCompanies();
   }, []);
 
+  async function search(formData) {
+    let res = await JoblyAPI.searchCompanies(formData);
+    setCompanies(res);
+  }
   return (
     <div className="Companies">
       <h1>Companies</h1>
-      {/* <Search /> */}
+      <Search findCompany={search}/>
       {companies.map(company => {
         return <Company key={company.handle} company={company}/>
       })}
