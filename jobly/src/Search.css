@@ -1,0 +1,36 @@
+
+.Search, .Search * {
+  box-sizing: border-box;
+}
+.Search {
+  margin-bottom: 20px;
+}
+.Search input[type=text] {
+  width: 89%;
+  height: 52px;
+  font-size: 26px;
+  padding: 12px;
+  
+}
+
+.Search button {
+  min-width: 5%;
+  font-size: 26px;
+  background-color: #3cf;
+  color: #fff;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 0;
+  padding: 12px;
+}
+@media only screen and (max-width: 972px) {
+  .Search input[type=text] {
+    width: 80%;
+    height: 40px;
+    font-size: 18px;
+  }
+  .Search button {
+    font-size: 18px;
+    height: 40px;
+  }
+}

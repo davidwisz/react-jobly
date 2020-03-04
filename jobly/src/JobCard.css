@@ -1,0 +1,23 @@
+.JobCard {
+  text-align: left;
+  padding: 15px;
+  border-radius: 3px;
+  margin-bottom: 25px;
+  box-shadow: 2px 1px 5px 3px rgba(199,195,199,1);
+  position: relative;
+}
+.JobCard a {
+  text-decoration: none;
+  color: #000;
+}
+
+.Apply {
+  float: right;
+  background-color: #DC381F;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 4px;
+  border: none;
+  padding: 8px 18px;
+}

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import JoblyAPI from './JoblyAPI';
-import Company from './Company';
+import CompanyCard from './CompanyCard';
 import './Companies.css';
 import Search from './Search';
 
@@ -23,7 +23,7 @@ function Companies() {
       <h1>Companies</h1>
       <Search findCompany={search}/>
       {companies.map(company => {
-        return <Company key={company.handle} company={company}/>
+        return <CompanyCard key={company.handle} company={company}/>
       })}
     </div>
   )
