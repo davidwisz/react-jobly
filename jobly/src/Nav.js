@@ -3,18 +3,17 @@ import { NavLink } from 'react-router-dom';
 import './Nav.css';
 
 
-const Nav = ({loggedIn}) => {
-  let navlinks = [];
-  let navCode;
+const Nav = ({ loggedIn }) => {
+  let jsx;
   if (!loggedIn) {
-    navCode = (
+    jsx = (
       <div className='NavLinks'>
         <NavLink exact to="/login">Login</NavLink>
       </div>
     );
   }
   else {
-    navCode = (
+    jsx = (
       <div className='NavLinks'>
         <NavLink exact to="/companies">Companies</NavLink>
         <NavLink exact to="/jobs">Jobs</NavLink>
@@ -26,7 +25,7 @@ const Nav = ({loggedIn}) => {
   return (
     <nav className='Nav'>
       <NavLink className='Logo' exact to="/">Jobly </NavLink>
-      {navCode}
+      {jsx}
     </nav>
   );
 }

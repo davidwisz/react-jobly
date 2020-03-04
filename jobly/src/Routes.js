@@ -4,10 +4,11 @@ import Companies from './Companies';
 import Company from './Company';
 import Jobs from './Jobs';
 import Login from './Login';
+import Logout from './Logout';
 import Profile from './Profile';
 import Home from './Home';
 
-const Routes = ({loggedIn}) => {
+const Routes = ({ loggedIn }) => {
 
   return (
     <Switch>
@@ -15,8 +16,9 @@ const Routes = ({loggedIn}) => {
       <Route exact path="/companies/:handle"><Company /></Route>
       <Route exact path="/jobs"><Jobs /></Route>
       <Route exact path="/login"><Login /></Route >
+      <Route exact path="/logout"><Logout /></Route >
       <Route exact path="/profile"><Profile /></Route >
-      <Route exact path="/"><Home loggedIn={loggedIn}/></Route>
+      <Route exact path="/"><Home loggedIn={loggedIn} /></Route>
       <Redirect to="/" />
     </Switch >
   );

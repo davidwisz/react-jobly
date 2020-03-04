@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import JoblyAPI from './JoblyAPI';
 import CompanyCard from './CompanyCard';
 import './Companies.css';
@@ -8,7 +8,7 @@ function Companies() {
   const [companies, setCompanies] = useState([]);
   useEffect(() => {
     async function getCompanies() {
-    let res = await JoblyAPI.getCompanies();
+      let res = await JoblyAPI.getCompanies();
       setCompanies(res);
     }
     getCompanies();
@@ -21,9 +21,9 @@ function Companies() {
   return (
     <div className="Companies">
       <h1>Companies</h1>
-      <Search findCompany={search}/>
+      <Search findItem={search} />
       {companies.map(company => {
-        return <CompanyCard key={company.handle} company={company}/>
+        return <CompanyCard key={company.handle} company={company} />
       })}
     </div>
   )
