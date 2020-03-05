@@ -19,7 +19,7 @@ const Nav = ({ loggedIn, logout}) => {
         <NavLink exact to="/companies">Companies</NavLink>
         <NavLink exact to="/jobs">Jobs</NavLink>
         <NavLink exact to="/profile">Profile </NavLink>
-        <Link exact to="/" onClick={logout}>Logout</Link>
+        <Link to="/" onClick={logout}>Logout</Link>
       </div>
     );
   }
