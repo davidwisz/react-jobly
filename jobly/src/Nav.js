@@ -1,10 +1,11 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import './Nav.css';
 
 
-const Nav = ({ loggedIn }) => {
+const Nav = ({ loggedIn, logout}) => {
   let jsx;
+  console.log("from Nav loggedIn:", loggedIn);
   if (!loggedIn) {
     jsx = (
       <div className='NavLinks'>
@@ -18,7 +19,7 @@ const Nav = ({ loggedIn }) => {
         <NavLink exact to="/companies">Companies</NavLink>
         <NavLink exact to="/jobs">Jobs</NavLink>
         <NavLink exact to="/profile">Profile </NavLink>
-        <NavLink exact to="/logout">Logout</NavLink>
+        <Link exact to="/" onClick={logout}>Logout</Link>
       </div>
     );
   }

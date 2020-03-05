@@ -8,14 +8,14 @@ import Logout from './Logout';
 import Profile from './Profile';
 import Home from './Home';
 
-const Routes = ({ loggedIn }) => {
+const Routes = ({ loggedIn, login }) => {
 
   return (
     <Switch>
       <Route exact path="/companies"><Companies /></Route>
       <Route exact path="/companies/:handle"><Company /></Route>
       <Route exact path="/jobs"><Jobs /></Route>
-      <Route exact path="/login"><Login /></Route >
+      <Route exact path="/login"><Login login={login} /></Route >
       <Route exact path="/logout"><Logout /></Route >
       <Route exact path="/profile"><Profile /></Route >
       <Route exact path="/"><Home loggedIn={loggedIn} /></Route>

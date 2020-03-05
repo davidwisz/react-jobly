@@ -53,8 +53,13 @@ class JoblyAPI {
   }
 
   static async login(formData) {
-    // console.log(formData);
-    let res = await this.request(`login/`, {username: formData.username, password: formData.password}, 'post');
+    let res = await this.request(`login/`, formData, 'post');
+    return res.token;
+  }
+
+  static async register(formData) {
+    console.log("formData from JoblyAPI.", formData);
+    let res = await this.request(`users/`, formData, 'post');
     return res.token;
   }
 }
