@@ -1,0 +1,6 @@
+.btn.btn-primary.custom-tab, .btn.btn-secondary.custom-tab {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  outline: none;
+  box-shadow: none;
+}

@@ -8,7 +8,7 @@ import Logout from './Logout';
 import Profile from './Profile';
 import Home from './Home';
 
-const Routes = ({ loggedIn, login }) => {
+const Routes = ({ loggedIn, login, currentUser }) => {
 
   return (
     <Switch>
@@ -17,7 +17,7 @@ const Routes = ({ loggedIn, login }) => {
       <Route exact path="/jobs"><Jobs /></Route>
       <Route exact path="/login"><Login login={login} /></Route >
       <Route exact path="/logout"><Logout /></Route >
-      <Route exact path="/profile"><Profile /></Route >
+      <Route exact path="/profile"><Profile currentUser={currentUser} /></Route >
       <Route exact path="/"><Home loggedIn={loggedIn} /></Route>
       <Redirect to="/" />
     </Switch >

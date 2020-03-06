@@ -5,7 +5,6 @@ import './Nav.css';
 
 const Nav = ({ loggedIn, logout}) => {
   let jsx;
-  console.log("from Nav loggedIn:", loggedIn);
   if (!loggedIn) {
     jsx = (
       <div className='NavLinks'>

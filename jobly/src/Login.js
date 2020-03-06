@@ -3,14 +3,17 @@ import JoblyAPI from './JoblyAPI';
 import { useHistory } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
+import Alert from './Alert';
+import './Login.css';
 
 function Login({ login }) {
+  const [errors, setErrors] = useState([]);
   const [formData, setFormData] = useState({
     username: "",
-    password: ""
+    password: "",
   });
-  const [registerBtnClass, setRegisterBtnClass] = useState('btn btn-secondary');
-  const [loginBtnClass, setLoginBtnClass] = useState('btn btn-primary');
+  const [registerBtnClass, setRegisterBtnClass] = useState('btn btn-secondary custom-tab');
+  const [loginBtnClass, setLoginBtnClass] = useState('btn btn-primary custom-tab');
   const [loginView, setLoginView] = useState('login');
   const viewSwitchRegister = () => {
     setFormData({...formData,
@@ -18,16 +21,18 @@ function Login({ login }) {
       last_name: "",
       email: ""
     })
-    setRegisterBtnClass('btn btn-primary');
-    setLoginBtnClass('btn btn-secondary');
+    setRegisterBtnClass('btn btn-primary custom-tab');
+    setLoginBtnClass('btn btn-secondary custom-tab');
     setLoginView('register');
+    setErrors([]);
   }
   const viewSwitchLogin = () => {
-    const {username, password} = formData;
-    setFormData({username, password});
-    setRegisterBtnClass('btn btn-secondary');
-    setLoginBtnClass('btn btn-primary');
+    const {username, password, errors} = formData;
+    setFormData({username, password, errors});
+    setRegisterBtnClass('btn btn-secondary custom-tab');
+    setLoginBtnClass('btn btn-primary custom-tab');
     setLoginView('login');
+    setErrors([]);
   }
   const history = useHistory();
 
@@ -43,43 +48,48 @@ function Login({ login }) {
     evt.preventDefault();
     if (loginView === 'login') {
       async function attemptLogin() {
-        let _token = await JoblyAPI.login({ ...formData });
+        let _token;
+        try {
+          _token = await JoblyAPI.login({ ...formData });
+        } 
+        catch(e) {
+          setErrors(e)
+        }
         if (_token) {
           localStorage.setItem('_token', _token);
           login(_token);
           history.push('/jobs');
-        }
-        else {
-          alert('WRONG!');
-          // TO DO: IMPLEMENT FLASH MESSAGE
         }
       };
       attemptLogin();
     }
     else if (loginView === 'register') {
       async function attemptRegistration() {
-        let _token = await JoblyAPI.register({ ...formData });
-        console.log('reg token!', _token)
+        let _token;
+        try {
+          _token = await JoblyAPI.register({ ...formData });
+        }
+        catch(e) {
+          setErrors(e)
+        }
         if (_token) {
           localStorage.setItem('_token', _token);
           login(_token);
           history.push('/jobs');
-        }
-        else {
-          alert('Failed to register!');
-          // TO DO: IMPLEMENT FLASH MESSAGE
         }
       };
       attemptRegistration();
     }
   };
 
-  // console.log('token!!!!', token)
   return (
     <div className="Login pt-5">
-      <button className={loginBtnClass} onClick={viewSwitchLogin}>Login</button><button className={registerBtnClass} onClick={viewSwitchRegister}>Sign up</button>
-      <div className="container">
+      <div className="container col-4" style={{textAlign: 'right', border: 'none'}}>
+        <button className={loginBtnClass} onClick={viewSwitchLogin}>Login</button><button className={registerBtnClass} onClick={viewSwitchRegister}>Sign up</button>
+      </div>
+      <div className="container col-4">
         <div className="card">
+          {(errors.length) ? <Alert errors={errors} /> : '' }
           <div className="card-body">
             {(loginView !== 'register') ? 
             <LoginForm gatherInput={gatherInput} handleChange={handleChange} formData={formData}/>
